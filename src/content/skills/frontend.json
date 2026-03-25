@@ -1,0 +1,59 @@
+{
+    "title": "Frontend",
+    "languages": [
+        {
+            "name": "HTML",
+            "level": "Avanzado",
+            "years": 4,
+            "icon": "/icons/html.svg"
+        },
+        {
+            "name": "CSS",
+            "level": "Avanzado",
+            "years": 4,
+            "icon": "/icons/css.svg"
+        },
+        {
+            "name": "JavaScript",
+            "level": "Avanzado",
+            "years": 4,
+            "icon": "/icons/javascript.svg"
+        },
+        {
+            "name": "TypeScript",
+            "level": "Intermedio",
+            "years": 2,
+            "icon": "/icons/typescript.svg"
+        }
+    ],
+    "frameworks": [
+        {
+            "name": "Angular",
+            "type": "Framework",
+            "level": "Intermedio",
+            "years": 2,
+            "icon": "/icons/angular.svg"
+        },
+        {
+            "name": "Astro",
+            "type": "Framework",
+            "level": "Intermedio",
+            "years": 1,
+            "icon": "/icons/astro.svg"
+        },
+        {
+            "name": "Bootstrap",
+            "type": "Framework",
+            "level": "Avanzado",
+            "years": 4,
+            "icon": "/icons/bootstrap.svg"
+        },
+        {
+            "name": "TailwindCSS",
+            "type": "Framework",
+            "level": "Avanzado",
+            "years": 2,
+            "icon": "/icons/tailwind.svg"
+        }
+    ]
+}

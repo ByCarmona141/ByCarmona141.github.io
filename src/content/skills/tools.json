@@ -1,0 +1,21 @@
+{
+    "title": "Herramientas",
+    "tools": [
+        {
+            "name": "Git",
+            "icon": "/icons/git.svg"
+        },
+        {
+            "name": "GitHub",
+            "icon": "/icons/github.svg"
+        },
+        {
+            "name": "GitLab",
+            "icon": "/icons/gitlab.svg"
+        },
+        {
+            "name": "Postman",
+            "icon": "/icons/postman.svg"
+        }
+    ]
+}

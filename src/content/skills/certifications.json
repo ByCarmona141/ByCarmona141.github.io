@@ -1,0 +1,45 @@
+{
+    "title": "Certificaciones",
+    "certifications": [
+        {
+            "name": "Cybersecurity Foundation",
+            "institution": "Palo Alto Network",
+            "year": 2022,
+            "credential_id": "8KRknVp4wZ",
+            "credential_url": "https://www.credly.com/badges/8KRknVp4wZ",
+            "icon": "/icons/paloalto.svg"
+        },
+        {
+            "name": "THE LINUX ESSENTIALS PROFESSIONAL DEVELOPMENT",
+            "institution": "NDG Linux Essentials",
+            "year": 2022,
+            "credential_id": "",
+            "credential_url": "",
+            "icon": "/icons/linux.svg"
+        },
+        {
+            "name": "Introduccion al Desarrollo Web I",
+            "institution": "Google Actívate",
+            "year": 2022,
+            "credential_id": "V9E JWY CRQ",
+            "credential_url": "https://www.credly.com/badges/8KRknVp4wZ",
+            "icon": "/icons/google.svg"
+        },
+        {
+            "name": "Introduccion al Desarrollo Web II",
+            "institution": "Google Actívate",
+            "year": 2022,
+            "credential_id": "F7T 2WH VP8",
+            "credential_url": "https://www.credly.com/badges/8KRknVp4wZ",
+            "icon": "/icons/google.svg"
+        },
+        {
+            "name": "CCNAv7: Introduction to Networks",
+            "institution": "Cisco",
+            "year": 2021,
+            "credential_id": "",
+            "credential_url": "",
+            "icon": "/icons/cisco.svg"
+        }
+    ]
+}

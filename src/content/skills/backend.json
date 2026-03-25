@@ -1,0 +1,56 @@
+{
+    "title": "Backend",
+    "languages": [
+        {
+            "name": "PHP",
+            "level": "Avanzado",
+            "years": 4,
+            "icon": "/icons/php.svg"
+        },
+        {
+            "name": "Java",
+            "level": "Intermedio",
+            "years": 2,
+            "icon": "/icons/java.svg"
+        },
+        {
+            "name": "Python",
+            "level": "Básico",
+            "years": 1,
+            "icon": "/icons/python.svg"
+        }
+    ],
+    "frameworks": [
+        {
+            "name": "Laravel",
+            "type": "Framework",
+            "level": "Avanzado",
+            "years": 4,
+            "icon": "/icons/laravel.svg"
+        },
+        {
+            "name": "FastAPI",
+            "type": "Framework",
+            "level": "Intermedio",
+            "years": 1,
+            "icon": "/icons/fastapi.svg"
+        }
+    ],
+    "databases": [
+        {
+            "name": "MySQL",
+            "type": "Relacional",
+            "icon": "/icons/mysql.svg"
+        },
+        {
+            "name": "MariaDB",
+            "type": "Relacional",
+            "icon": "/icons/mariadb.svg"
+        },
+        {
+            "name": "PostgreSQL",
+            "type": "Relacional",
+            "icon": "/icons/postgresql.svg"
+        }
+    ]
+}

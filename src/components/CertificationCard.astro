@@ -1,0 +1,147 @@
+---
+const { name, icon, color1, color2, color3 } = Astro.props;
+---
+
+<style define:vars={{ color1, color2, color3 }}>
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        perspective: 1000px;
+    }
+
+    /* Card */
+    .e-card {
+        background: transparent;
+        box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+        position: relative;
+        width: 240px;
+        height: 250px;
+        border-radius: 16px;
+        overflow: hidden;
+
+        transform-style: preserve-3d;
+        transition: transform 0.2s ease;
+    }
+
+    /* Waves */
+    .wave {
+        position: absolute;
+        width: 540px;
+        height: 700px;
+        opacity: 0.6;
+        left: 0;
+        top: 0;
+        margin-left: -50%;
+        margin-top: -70%;
+        background: linear-gradient(744deg, #00c6ff, #0072ff 60%, #6a11cb);
+
+        border-radius: 40%;
+        animation: wave 55s infinite linear;
+    }
+
+    .wave:nth-child(2),
+    .wave:nth-child(3) {
+        top: 210px;
+    }
+
+    .playing .wave {
+        animation: wave 3000ms infinite linear;
+    }
+
+    .playing .wave:nth-child(2) {
+        animation-duration: 4000ms;
+    }
+
+    .playing .wave:nth-child(3) {
+        animation-duration: 5000ms;
+    }
+
+    /* Contenido centrado */
+    .infotop {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateZ(50px);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        color: white;
+    }
+
+    /* Icono */
+    .icon {
+        width: 5em;
+        transform: translateZ(70px);
+    }
+
+    /* Texto */
+    .name {
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 0.5em;
+        transform: translateZ(60px);
+    }
+
+    /* Animación */
+    @keyframes wave {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<div class="wrapper">
+    <div class="e-card playing">
+        <div class="image"></div>
+
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+
+        <div class="infotop">
+            <img src={icon} alt={name} class="icon" />
+            <h1 class="name">{name}</h1>
+        </div>
+    </div>
+</div>
+
+<script>
+    const card = document.querySelector(".e-card");
+
+    card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = -(y - centerY) / 15;
+        const rotateY = (x - centerX) / 15;
+
+        card.style.transform = `
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        scale(1.05)
+    `;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = `
+        rotateX(0deg)
+        rotateY(0deg)
+        scale(1)
+    `;
+    });
+</script>

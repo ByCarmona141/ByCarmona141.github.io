@@ -1,0 +1,41 @@
+---
+const { title, description } = Astro.props;
+---
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <meta name="author" content="ByCarmona141" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://bycarmona141.github.io" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+        property="og:image"
+        content="https://bycarmona141.github.io/favicon.svg"
+    />
+    <meta property="og:url" content="https://bycarmona141.github.io" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta
+        name="twitter:image"
+        content="https://bycarmona141.github.io/favicon.svg"
+    />
+</head>
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ByCarmona141",
+        "url": "https://bycarmona141.github.io"
+    }
+</script>

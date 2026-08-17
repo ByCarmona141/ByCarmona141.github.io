@@ -1,0 +1,369 @@
+---
+const { name, icon, color1, color2, color3 } = Astro.props;
+---
+
+<style define:vars={{ color1, color2, color3 }}>
+    .card-3d {
+        position: relative;
+        width: 190px;
+        height: 190px;
+        transform-style: preserve-3d;
+    }
+
+    .card-body {
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        background: linear-gradient(45deg, #1a1a1a, #262626);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        transition: 700ms;
+        box-shadow:
+            0 0 20px rgba(0, 0, 0, 0.3),
+            inset 0 0 20px rgba(0, 0, 0, 0.2);
+        transform-style: preserve-3d;
+    }
+
+    .card-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* CENTRO */
+    .card-center {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .card-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: drop-shadow(0 0 10px rgba(0, 255, 200, 0.6));
+    }
+
+    .card-icon svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .card-label {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, #00ffaa, #00a2ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 10px rgba(0, 255, 200, 0.5);
+    }
+
+    /* GLOW */
+    .glowing-elements {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+    .glow-1,
+    .glow-2,
+    .glow-3 {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle,
+            rgba(0, 255, 170, 0.3),
+            transparent
+        );
+        filter: blur(15px);
+        opacity: 0;
+        transition: 0.3s;
+    }
+    .glow-1 {
+        top: -20px;
+        left: -20px;
+    }
+    .glow-2 {
+        top: 50%;
+        right: -30px;
+        transform: translateY(-50%);
+    }
+    .glow-3 {
+        bottom: -20px;
+        left: 30%;
+    }
+
+    /* PARTICLES */
+    .card-particles span {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: #00ffaa;
+        border-radius: 50%;
+        opacity: 0;
+    }
+
+    .card-particles span:nth-child(1) {
+        top: 40%;
+        left: 20%;
+    }
+    .card-particles span:nth-child(2) {
+        top: 60%;
+        right: 20%;
+    }
+    .card-particles span:nth-child(3) {
+        top: 20%;
+        left: 40%;
+    }
+    .card-particles span:nth-child(4) {
+        top: 80%;
+        right: 40%;
+    }
+    .card-particles span:nth-child(5) {
+        top: 30%;
+        left: 60%;
+    }
+    .card-particles span:nth-child(6) {
+        top: 70%;
+        right: 60%;
+    }
+
+    @keyframes particleFloat {
+        0% {
+            transform: translate(0, 0);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(20px, -20px);
+            opacity: 0;
+        }
+    }
+
+    .tracker:hover ~ .card-body .card-particles span {
+        animation: particleFloat 2s infinite;
+    }
+
+    /* TRACKERS */
+    .card-canvas {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        perspective: 800px;
+    }
+    .tracker {
+        z-index: 10;
+    }
+
+    /* ROTACIONES 3D */
+    .tr-1:hover ~ .card-body {
+        transform: rotateX(20deg) rotateY(-10deg);
+    }
+    .tr-2:hover ~ .card-body {
+        transform: rotateX(20deg) rotateY(-5deg);
+    }
+    .tr-3:hover ~ .card-body {
+        transform: rotateX(20deg) rotateY(0deg);
+    }
+    .tr-4:hover ~ .card-body {
+        transform: rotateX(20deg) rotateY(5deg);
+    }
+    .tr-5:hover ~ .card-body {
+        transform: rotateX(20deg) rotateY(10deg);
+    }
+    .tr-6:hover ~ .card-body {
+        transform: rotateX(10deg) rotateY(-10deg);
+    }
+    .tr-7:hover ~ .card-body {
+        transform: rotateX(10deg) rotateY(-5deg);
+    }
+    .tr-8:hover ~ .card-body {
+        transform: rotateX(10deg) rotateY(0deg);
+    }
+    .tr-9:hover ~ .card-body {
+        transform: rotateX(10deg) rotateY(5deg);
+    }
+    .tr-10:hover ~ .card-body {
+        transform: rotateX(10deg) rotateY(10deg);
+    }
+    .tr-11:hover ~ .card-body {
+        transform: rotateX(0deg) rotateY(-10deg);
+    }
+    .tr-12:hover ~ .card-body {
+        transform: rotateX(0deg) rotateY(-5deg);
+    }
+    .tr-13:hover ~ .card-body {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    .tr-14:hover ~ .card-body {
+        transform: rotateX(0deg) rotateY(5deg);
+    }
+    .tr-15:hover ~ .card-body {
+        transform: rotateX(0deg) rotateY(10deg);
+    }
+    .tr-16:hover ~ .card-body {
+        transform: rotateX(-10deg) rotateY(-10deg);
+    }
+    .tr-17:hover ~ .card-body {
+        transform: rotateX(-10deg) rotateY(-5deg);
+    }
+    .tr-18:hover ~ .card-body {
+        transform: rotateX(-10deg) rotateY(0deg);
+    }
+    .tr-19:hover ~ .card-body {
+        transform: rotateX(-10deg) rotateY(5deg);
+    }
+    .tr-20:hover ~ .card-body {
+        transform: rotateX(-10deg) rotateY(10deg);
+    }
+    .tr-21:hover ~ .card-body {
+        transform: rotateX(-20deg) rotateY(-10deg);
+    }
+    .tr-22:hover ~ .card-body {
+        transform: rotateX(-20deg) rotateY(-5deg);
+    }
+    .tr-23:hover ~ .card-body {
+        transform: rotateX(-20deg) rotateY(0deg);
+    }
+    .tr-24:hover ~ .card-body {
+        transform: rotateX(-20deg) rotateY(5deg);
+    }
+    .tr-25:hover ~ .card-body {
+        transform: rotateX(-20deg) rotateY(10deg);
+    }
+
+    /* HOVER GLOW */
+    .tracker:hover ~ .card-body .glowing-elements div {
+        opacity: 1;
+    }
+
+    /* ESQUINAS */
+    .corner-elements span {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border: 2px solid rgba(92, 103, 255, 0.3);
+        transition: 0.3s;
+    }
+    .corner-elements span:nth-child(1) {
+        top: 10px;
+        left: 10px;
+        border-right: 0;
+        border-bottom: 0;
+    }
+    .corner-elements span:nth-child(2) {
+        top: 10px;
+        right: 10px;
+        border-left: 0;
+        border-bottom: 0;
+    }
+    .corner-elements span:nth-child(3) {
+        bottom: 10px;
+        left: 10px;
+        border-right: 0;
+        border-top: 0;
+    }
+    .corner-elements span:nth-child(4) {
+        bottom: 10px;
+        right: 10px;
+        border-left: 0;
+        border-top: 0;
+    }
+
+    .card-body:hover .corner-elements span {
+        border-color: rgba(92, 103, 255, 0.8);
+        box-shadow: 0 0 10px rgba(92, 103, 255, 0.5);
+    }
+
+    .noselect {
+        user-select: none;
+    }
+</style>
+
+<div class="card-3d noselect">
+    <div class="card-canvas">
+        <!-- 25 TRACKERS -->
+        <div class="tracker tr-1"></div>
+        <div class="tracker tr-2"></div>
+        <div class="tracker tr-3"></div>
+        <div class="tracker tr-4"></div>
+        <div class="tracker tr-5"></div>
+
+        <div class="tracker tr-6"></div>
+        <div class="tracker tr-7"></div>
+        <div class="tracker tr-8"></div>
+        <div class="tracker tr-9"></div>
+        <div class="tracker tr-10"></div>
+
+        <div class="tracker tr-11"></div>
+        <div class="tracker tr-12"></div>
+        <div class="tracker tr-13"></div>
+        <div class="tracker tr-14"></div>
+        <div class="tracker tr-15"></div>
+
+        <div class="tracker tr-16"></div>
+        <div class="tracker tr-17"></div>
+        <div class="tracker tr-18"></div>
+        <div class="tracker tr-19"></div>
+        <div class="tracker tr-20"></div>
+
+        <div class="tracker tr-21"></div>
+        <div class="tracker tr-22"></div>
+        <div class="tracker tr-23"></div>
+        <div class="tracker tr-24"></div>
+        <div class="tracker tr-25"></div>
+
+        <!-- CARD -->
+        <div class="card-body">
+            <div class="card-content">
+                <div class="card-glare"></div>
+
+                <div class="cyber-lines">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+
+                <!-- CENTRO: ICON + TEXTO -->
+                <div class="card-center">
+                    <div class="card-icon">
+                        <!-- SVG React -->
+                        <img src={icon} alt={name} class="icon" />
+                    </div>
+                    <div class="card-label">{name}</div>
+                </div>
+
+                <!-- GLOW -->
+                <div class="glowing-elements">
+                    <div class="glow-1"></div>
+                    <div class="glow-2"></div>
+                    <div class="glow-3"></div>
+                </div>
+
+                <!-- PARTICLES -->
+                <div class="card-particles">
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
+
+                <!-- ESQUINAS -->
+                <div class="corner-elements">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+
+                <!-- SCAN -->
+                <div class="scan-line"></div>
+            </div>
+        </div>
+    </div>
+</div>

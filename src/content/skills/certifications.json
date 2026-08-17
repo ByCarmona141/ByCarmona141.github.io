@@ -2,12 +2,20 @@
     "title": "Certificaciones",
     "certifications": [
         {
+            "name": "Curso Professional Software Developer",
+            "institution": "IEEE Computer Society",
+            "year": 2026,
+            "credential_id": "183503331",
+            "credential_url": "https://credentialing.ea.ieee.org/d7926e83-7c93-45ce-95f9-284bc97d53a2#acc.jl5EnXmT",
+            "icon": "/icons/certifications/-cs.svg"
+        },
+        {
             "name": "Cybersecurity Foundation",
             "institution": "Palo Alto Network",
             "year": 2022,
             "credential_id": "8KRknVp4wZ",
             "credential_url": "https://www.credly.com/badges/8KRknVp4wZ",
-            "icon": "/icons/paloalto.svg"
+            "icon": "/icons/certifications/paloalto.svg"
         },
         {
             "name": "THE LINUX ESSENTIALS PROFESSIONAL DEVELOPMENT",
@@ -15,7 +23,7 @@
             "year": 2022,
             "credential_id": "",
             "credential_url": "",
-            "icon": "/icons/linux.svg"
+            "icon": "/icons/certifications/linux.svg"
         },
         {
             "name": "Introduccion al Desarrollo Web I",
@@ -23,7 +31,7 @@
             "year": 2022,
             "credential_id": "V9E JWY CRQ",
             "credential_url": "https://www.credly.com/badges/8KRknVp4wZ",
-            "icon": "/icons/google.svg"
+            "icon": "/icons/certifications/google.svg"
         },
         {
             "name": "Introduccion al Desarrollo Web II",
@@ -31,7 +39,7 @@
             "year": 2022,
             "credential_id": "F7T 2WH VP8",
             "credential_url": "https://www.credly.com/badges/8KRknVp4wZ",
-            "icon": "/icons/google.svg"
+            "icon": "/icons/certifications/google.svg"
         },
         {
             "name": "CCNAv7: Introduction to Networks",
@@ -39,7 +47,7 @@
             "year": 2021,
             "credential_id": "",
             "credential_url": "",
-            "icon": "/icons/cisco.svg"
+            "icon": "/icons/certifications/cisco.svg"
         }
     ]
 }

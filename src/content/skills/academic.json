@@ -2,6 +2,22 @@
     "title": "Producción Académica",
     "publications": [
         {
+            "title": "Monitoring Tool to Prevent Data Leaks in a RESTful API",
+            "type": "Artículo científico",
+            "journal": "Digital Cultures, Ethics, and Corporate Responsibility: Perspectives in Contemporary Innovation",
+            "year": 2026,
+            "doi": "10.31876/9789942531582",
+            "url": "https://repo.grupocompas.com/items/c32165ce-b35b-48cc-81ba-1a75aefa0809",
+            "authors": [
+                "Carlos Álvarez Carmona",
+                "René Edmundo Cuevas Valencia",
+                "Arnulfo Catalán Villegas",
+                "Angelino Feliciano Morales"
+            ],
+            "indexed": "Scopus",
+            "icon": "/icons/publication.svg"
+        },
+        {
             "title": "Monitoring Software Tool to Prevent Data Leaks in a RESTful API",
             "type": "Artículo científico",
             "journal": "Technologies and Innovation",

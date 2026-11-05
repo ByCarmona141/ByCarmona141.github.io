@@ -1,0 +1,29 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  // side = descripción a la derecha, stacked = descripción debajo del título
+  layout?: 'side' | 'stacked';
+}
+const { eyebrow, title, description, layout = 'side' } = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-space-lg">
+  <div class="flex flex-col">
+    <span class="font-label-code text-label-code text-secondary font-semibold uppercase tracking-wider">
+      {eyebrow}
+    </span>
+    <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">{title}</h2>
+    {description && layout === 'stacked' && (
+      <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">{description}</p>
+    )}
+  </div>
+
+  {description && layout === 'side' && (
+    <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">{description}</p>
+  )}
+
+  <!-- Lo que pongas dentro de <SectionHeader> aparece a la derecha (ej: los controles del carrusel) -->
+  <slot />
+</div>

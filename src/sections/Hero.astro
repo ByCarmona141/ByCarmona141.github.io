@@ -1,0 +1,219 @@
+---
+import { site } from '@/content/site';
+
+const { orcid } = site;
+
+const estado = 'DISPONIBLE: PROYECTOS & COLABORACIÓN CIENTÍFICA';
+
+const perfil = {
+  nombre: site.nombre,
+  puesto: 'Desarrollador de Software e Investigador Independiente',
+  descripcion:
+    'Especializado en el diseño y despliegue de arquitecturas web robustas con Laravel y Angular, con enfoque investigativo en la seguridad aplicada, telemetría y el monitoreo estricto de APIs RESTful para prevenir fugas críticas de datos.',
+};
+
+// Cada botón tiene su propio color, por eso guardo las clases completas
+const botones = [
+  {
+    texto: 'Explorar Research',
+    icono: 'biotech',
+    href: '/research',
+    clases: 'bg-primary-container text-on-primary hover:bg-secondary shadow-md',
+  },
+  {
+    texto: 'Leer Blog Técnico',
+    icono: 'terminal',
+    href: '/blog-tecnico',
+    clases: 'bg-surface-container-high text-primary hover:bg-surface-container-highest shadow-sm',
+  },
+  {
+    texto: 'Descargar CV / Contactar',
+    icono: 'arrow_downward',
+    href: '#contacto',
+    clases: 'bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm',
+  },
+];
+
+const metricas = [
+    { 
+        etiqueta: 'INSPECCIÓN REST', 
+        valor: '100%', 
+        detalle: 'Zero Exfiltration Rate' 
+    },
+    { 
+        etiqueta: 'STACK BASE', 
+        valor: 'PHP / TS', 
+        detalle: 'Laravel & Angular' 
+    },
+];
+
+const nota =
+  'Rigor analítico respaldado por publicaciones formales y arquitectura de grado empresarial construida para tolerar cargas críticas.';
+
+// Forma del latido: lo uso dos veces (la línea tenue y la animada)
+const latido =
+  'M0,45 L40,45 L55,20 L70,65 L85,45 L140,45 L155,10 L170,75 L185,45 L240,45 L255,30 L270,58 L285,45 L380,45';
+---
+
+<section
+  class="relative w-full max-w-[1280px] mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl overflow-hidden"
+>
+  <!-- Fondo: puntos y luces -->
+  <div class="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-[#499BED] blur-3xl animate-hero-glow"></div>
+    <div class="absolute bottom-0 left-10 w-[500px] h-[500px] rounded-full bg-[#A1C6F6] blur-3xl opacity-10"></div>
+    <div class="dot-grid w-full h-full opacity-[0.14]"></div>
+  </div>
+
+  <div class="flex flex-col lg:flex-row items-start justify-between gap-space-xl">
+    <!-- ============ Columna izquierda: texto ============ -->
+    <div class="flex flex-col max-w-3xl">
+      <!-- Insignias -->
+      <div class="flex flex-wrap items-center gap-space-sm mb-space-lg">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-surface-container-high via-surface-container to-surface-container-high text-primary shadow-sm badge-shimmer"
+        >
+          <span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+          <span class="w-2 h-2 rounded-full bg-secondary-container -ml-4"></span>
+          <span class="font-label-code text-label-code tracking-wide">{estado}</span>
+        </div>
+
+        <a
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors shadow-sm"
+          href={"https://orcid.org/" + orcid.id}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <svg class="w-3.5 h-3.5 text-[#A6CE39] fill-current" viewBox="0 0 256 256" aria-hidden="true">
+            <path
+              d="M128,0A128,128,0,1,0,256,128,128,128,0,0,0,128,0ZM86.35,186.26H64.78V78.85H86.35ZM75.56,66.69A12.48,12.48,0,1,1,88,54.21,12.48,12.48,0,0,1,75.56,66.69Zm115.68,75c0,27.18-17.65,44.57-46.74,44.57H106.63V78.85h41.49C174.5,78.85,191.24,96.32,191.24,141.69Zm-22.18,0c0-19.14-9.39-31.52-27.18-31.52H128.21v63.15h13.67C159.67,173.32,169.06,160.83,169.06,141.69Z"
+            ></path>
+          </svg>
+          <span class="font-label-code text-label-code">{orcid.id}</span>
+          <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+        </a>
+      </div>
+
+      <!-- Título y descripción -->
+      <h1 class="font-display-hero text-display-hero text-primary tracking-tight mb-space-sm">
+        {perfil.nombre}
+      </h1>
+      <p class="font-headline-md text-headline-md text-secondary font-medium tracking-tight mb-space-md">
+        {perfil.puesto}
+      </p>
+      <p class="font-citation-editorial text-citation-editorial text-on-surface-variant text-lg max-w-2xl mb-space-xl">
+        {perfil.descripcion}
+      </p>
+
+      <!-- Botones -->
+      <div class="flex flex-wrap items-center gap-space-sm">
+        {botones.map((boton) => (
+          <a
+            class:list={[
+              'inline-flex items-center gap-2 px-5 py-3 rounded-lg font-headline-sm text-sm font-semibold tracking-wide transition-all',
+              boton.clases,
+            ]}
+            href={boton.href}
+          >
+            <span>{boton.texto}</span>
+            <span class="material-symbols-outlined text-[18px]">{boton.icono}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- ============ Columna derecha: monitor de telemetría ============ -->
+    <div class="w-full lg:w-[420px] flex flex-col gap-space-md">
+      <div class="bg-primary text-on-primary p-space-lg rounded-xl shadow-xl flex flex-col gap-space-md border border-white/5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary-fixed text-[20px]">shield</span>
+            <span class="font-label-code text-label-code text-secondary-fixed tracking-widest uppercase">Telemetry Guard</span>
+          </div>
+          <span class="font-label-code text-label-code text-secondary-container bg-surface-container/10 px-2 py-0.5 rounded-DEFAULT badge-shimmer">
+            LIVE ACTIVE
+          </span>
+        </div>
+
+        <!-- Gráfica del latido -->
+        <div class="w-full h-24 relative flex items-center justify-center bg-surface-container/5 rounded-lg p-2 overflow-hidden">
+          <svg class="w-full h-full text-secondary-container" fill="none" preserveAspectRatio="none" viewBox="0 0 380 80" aria-hidden="true">
+            <path
+              class="opacity-25"
+              d={latido}
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            ></path>
+            <path
+              class="animate-ecg drop-shadow-[0_0_6px_rgba(90,170,253,0.8)]"
+              d={latido}
+              stroke="#5aaafd"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+            ></path>
+            <circle class="animate-pulse" cx="170" cy="75" fill="#5aaafd" r="3.5"></circle>
+            <circle class="animate-pulse" cx="55" cy="20" fill="#5aaafd" r="3.5"></circle>
+          </svg>
+        </div>
+
+        <!-- Métricas -->
+        <div class="grid grid-cols-2 gap-space-sm pt-2">
+          {metricas.map((m) => (
+            <div class="flex flex-col bg-surface-container/10 p-2.5 rounded-lg">
+              <span class="font-label-code text-label-code text-on-primary-container">{m.etiqueta}</span>
+              <span class="font-headline-sm text-headline-sm text-white">{m.valor}</span>
+              <span class="font-label-sm text-label-sm text-secondary-fixed">{m.detalle}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Nota -->
+      <div class="p-space-md bg-surface-container-low rounded-xl shadow-sm flex items-start gap-space-sm">
+        <span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">verified_user</span>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">{nota}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Puntos del fondo (antes estaba como style="" dentro del HTML) */
+  .dot-grid {
+    background-image: radial-gradient(#0061a5 1.25px, transparent 1.25px);
+    background-size: 28px 28px;
+  }
+
+  /* Latido de la gráfica */
+  @keyframes pulse-ecg {
+    0%   { stroke-dashoffset: 400; opacity: 0.6; }
+    50%  { stroke-dashoffset: 0;   opacity: 1; }
+    100% { stroke-dashoffset: -400; opacity: 0.6; }
+  }
+  .animate-ecg {
+    stroke-dasharray: 200;
+    animation: pulse-ecg 3.5s ease-in-out infinite;
+  }
+
+  /* Luz que respira en el fondo */
+  @keyframes hero-glow {
+    0%, 100% { opacity: 0.08; transform: scale(1); }
+    50%      { opacity: 0.16; transform: scale(1.06); }
+  }
+  .animate-hero-glow {
+    animation: hero-glow 8s ease-in-out infinite;
+  }
+
+  /* Brillo que recorre las insignias */
+  @keyframes badge-shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .badge-shimmer {
+    background-size: 200% 100%;
+    animation: badge-shimmer 3.5s ease-in-out infinite;
+  }
+</style>

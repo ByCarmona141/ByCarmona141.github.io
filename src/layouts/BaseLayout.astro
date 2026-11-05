@@ -1,0 +1,205 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Carlos Álvarez Carmona | Ingeniero de Software & Investigador',
+  description = 'Desarrollador de software e investigador independiente.',
+} = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description} />
+        <title>{title}</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
+	</head>
+	<body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col">
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+	@import "tailwindcss";
+	
+	@theme {
+		--primary-color: #499BED;
+		--secondary-color: #022E5B;
+		--tertiary-color: #A1C6F6;
+		--neutral-color: #031725;
+		--color-light: #DAEAFF;
+
+        /* ---------- Colores ---------- */
+        --color-primary: #001937;
+        --color-primary-container: #022e5b;
+        --color-primary-fixed: #d5e3ff;
+        --color-primary-fixed-dim: #a8c8fe;
+        --color-on-primary: #ffffff;
+        --color-on-primary-container: #7797ca;
+        --color-on-primary-fixed: #001c3b;
+        --color-on-primary-fixed-variant: #254775;
+        --color-secondary: #0061a5;
+        --color-secondary-container: #5aaafd;
+        --color-secondary-fixed: #d2e4ff;
+        --color-secondary-fixed-dim: #9fcaff;
+        --color-on-secondary: #ffffff;
+        --color-on-secondary-container: #003d6b;
+        --color-on-secondary-fixed: #001d37;
+        --color-on-secondary-fixed-variant: #00497e;
+        --color-tertiary: #071b29;
+        --color-tertiary-container: #1d303f;
+        --color-tertiary-fixed: #d1e5f9;
+        --color-tertiary-fixed-dim: #b5c9dc;
+        --color-on-tertiary: #ffffff;
+        --color-on-tertiary-container: #8598aa;
+        --color-on-tertiary-fixed: #091d2b;
+        --color-on-tertiary-fixed-variant: #364959;
+        --color-error: #ba1a1a;
+        --color-error-container: #ffdad6;
+        --color-on-error: #ffffff;
+        --color-on-error-container: #93000a;
+        --color-background: #f9f9ff;
+        --color-on-background: #111c2d;
+        --color-surface: #f9f9ff;
+        --color-surface-bright: #f9f9ff;
+        --color-surface-dim: #cfdaf2;
+        --color-surface-tint: #3f5f8f;
+        --color-surface-variant: #d8e3fb;
+        --color-surface-container-lowest: #ffffff;
+        --color-surface-container-low: #f0f3ff;
+        --color-surface-container: #e7eeff;
+        --color-surface-container-high: #dee8ff;
+        --color-surface-container-highest: #d8e3fb;
+        --color-on-surface: #111c2d;
+        --color-on-surface-variant: #43474f;
+        --color-inverse-surface: #263143;
+        --color-inverse-on-surface: #ecf1ff;
+        --color-inverse-primary: #a8c8fe;
+        --color-outline: #737780;
+        --color-outline-variant: #c3c6d0;
+
+        /* ---------- Espaciados ---------- */
+        --spacing-space-xs: 0.25rem;
+        --spacing-space-sm: 0.5rem;
+        --spacing-space-md: 1rem;
+        --spacing-space-lg: 1.5rem;
+        --spacing-space-xl: 2.5rem;
+        --spacing-margin: 1.25rem;
+        --spacing-margin-tablet: 2rem;
+        --spacing-margin-desktop: 3.5rem;
+        --spacing-gutter: 1.5rem;
+        --spacing-gutter-desktop: 2rem;
+
+        /* ---------- Bordes redondeados ---------- */
+        --radius-DEFAULT: 0.125rem;
+        --radius-lg: 0.25rem;
+        --radius-xl: 0.5rem;
+        --radius-full: 0.75rem;
+
+        /* ---------- Fuentes ---------- */
+        --font-display-hero: "Inter", sans-serif;
+        --font-display-hero-mobile: "Inter", sans-serif;
+        --font-headline-lg: "Inter", sans-serif;
+        --font-headline-lg-mobile: "Inter", sans-serif;
+        --font-headline-md: "Inter", sans-serif;
+        --font-headline-sm: "Inter", sans-serif;
+        --font-body-lg: "Inter", sans-serif;
+        --font-body-md: "Inter", sans-serif;
+        --font-body-sm: "Inter", sans-serif;
+        --font-label-sm: "Inter", sans-serif;
+        --font-label-code: "JetBrains Mono", monospace;
+        --font-code-inline: "JetBrains Mono", monospace;
+        --font-citation-editorial: "Source Serif 4", serif;
+
+        /* ---------- Tamaños de texto ---------- */
+        --text-display-hero: 3.5rem;
+        --text-display-hero--line-height: 1.1;
+        --text-display-hero--letter-spacing: -0.03em;
+        --text-display-hero--font-weight: 700;
+
+        --text-display-hero-mobile: 2.25rem;
+        --text-display-hero-mobile--line-height: 1.15;
+        --text-display-hero-mobile--letter-spacing: -0.02em;
+        --text-display-hero-mobile--font-weight: 700;
+
+        --text-headline-lg: 2.25rem;
+        --text-headline-lg--line-height: 1.2;
+        --text-headline-lg--letter-spacing: -0.02em;
+        --text-headline-lg--font-weight: 600;
+
+        --text-headline-lg-mobile: 1.75rem;
+        --text-headline-lg-mobile--line-height: 1.25;
+        --text-headline-lg-mobile--letter-spacing: -0.015em;
+        --text-headline-lg-mobile--font-weight: 600;
+
+        --text-headline-md: 1.5rem;
+        --text-headline-md--line-height: 1.3;
+        --text-headline-md--letter-spacing: -0.01em;
+        --text-headline-md--font-weight: 600;
+
+        --text-headline-sm: 1.25rem;
+        --text-headline-sm--line-height: 1.4;
+        --text-headline-sm--letter-spacing: -0.005em;
+        --text-headline-sm--font-weight: 600;
+
+        --text-body-lg: 1.125rem;
+        --text-body-lg--line-height: 1.65;
+        --text-body-lg--font-weight: 400;
+
+        --text-body-md: 1rem;
+        --text-body-md--line-height: 1.6;
+        --text-body-md--font-weight: 400;
+
+        --text-body-sm: 0.875rem;
+        --text-body-sm--line-height: 1.5;
+        --text-body-sm--font-weight: 400;
+
+        --text-label-sm: 0.75rem;
+        --text-label-sm--line-height: 1.2;
+        --text-label-sm--letter-spacing: 0.02em;
+        --text-label-sm--font-weight: 500;
+
+        --text-label-code: 0.75rem;
+        --text-label-code--line-height: 1.2;
+        --text-label-code--letter-spacing: 0.05em;
+        --text-label-code--font-weight: 500;
+
+        --text-code-inline: 0.875rem;
+        --text-code-inline--line-height: 1.4;
+        --text-code-inline--font-weight: 400;
+
+        --text-citation-editorial: 1.0625rem;
+        --text-citation-editorial--line-height: 1.7;
+        --text-citation-editorial--font-weight: 400;
+	}
+
+    @layer base {
+        html, body { 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        html { 
+            scroll-padding-top: 5rem; 
+        }
+
+        body { 
+            overscroll-behavior: none; 
+        }
+    }
+
+    /* Oculta la barra de scroll en toda la página */
+    ::-webkit-scrollbar { 
+        display: none; 
+    }
+</style>

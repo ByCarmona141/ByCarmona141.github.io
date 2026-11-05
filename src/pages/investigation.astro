@@ -1,0 +1,26 @@
+---
+import CertificationCard from '@/components/Cards/CertificationCard.astro';
+import AcademicCard from '@/components/Cards/AcademicCard.astro';
+import Charger from '@/components/Charger.astro';
+import ToolCard from '../components/Cards/ToolCard.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<AcademicCard></AcademicCard>
+
+		<Footer></Footer>
+	</body>
+</html>
+
+<style is:global>
+	@import "tailwindcss";
+</style>

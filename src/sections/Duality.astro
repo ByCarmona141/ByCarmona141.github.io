@@ -1,0 +1,87 @@
+---
+import Section from '@/components/ui/Section.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+
+const pilares = [
+  {
+    etiqueta: 'Pilar I',
+    titulo: 'Ingeniería de Software',
+    icono: 'code',
+    iconoClase: 'bg-surface-container-high text-primary',
+    descripcion:
+      'Desarrollo de ecosistemas web escalables y modulares. Construcción de interfaces reactivas ricas en Angular y backends transaccionales estructurados en Laravel.',
+    puntos: [
+      'Arquitecturas Clean, Domain-Driven & Repository Pattern',
+      'Componentes reactivos con RxJS y estado desacoplado',
+      'Bases de datos optimizadas con transacciones ACID complejas',
+    ],
+    puntoIcono: 'check_circle',
+    puntoIconoClase: 'text-secondary',
+    pieClase: 'bg-surface-container-low',
+    pieIzquierda: 'ENFOQUE: PRODUCCIÓN & ESCALA',
+    pieDerecha: 'L10 / V17',
+    pieDerechaClase: 'text-on-surface-variant',
+  },
+  {
+    etiqueta: 'Pilar II',
+    titulo: 'Investigación & Ciberseguridad',
+    icono: 'policy',
+    iconoClase: 'bg-primary text-on-primary',
+    descripcion:
+      'Investigador independiente centrado en telemetría de sistemas distribuidos, análisis heurístico de tráfico HTTP y mitigación proactiva de fugas involuntarias de datos estructurados.',
+    puntos: [
+      'Validación formal y observabilidad de contratos API RESTful',
+      'Mitigación de OWASP API Security Top 10 (BOLA, Broken Auth)',
+      'Publicación de artículos técnicos y repositorios científicos reproducibles',
+    ],
+    puntoIcono: 'security',
+    puntoIconoClase: 'text-primary',
+    pieClase: 'bg-surface-container-high',
+    pieIzquierda: 'ENFOQUE: AUDITORÍA & DEFENSA',
+    pieDerecha: 'PEER-REVIEWED',
+    pieDerechaClase: 'text-secondary font-bold',
+  },
+];
+---
+
+<Section tone="soft">
+  <SectionHeader eyebrow="Metodología de Trabajo" title="Dualidad Profesional & Enfoque" />
+
+    <!-- Tarjetas -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+      {pilares.map((p) => (
+        <div
+          class="bg-surface-container-lowest p-space-xl rounded-xl shadow-md flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(73,155,237,0.18)]"
+        >
+          <div>
+            <div class:list={['w-12 h-12 rounded-xl flex items-center justify-center mb-space-md', p.iconoClase]}>
+              <span class="material-symbols-outlined text-[28px]">{p.icono}</span>
+            </div>
+
+            <span class="font-label-code text-label-code text-secondary uppercase font-bold tracking-wide">
+              {p.etiqueta}
+            </span>
+            <h3 class="font-headline-md text-headline-md text-primary mt-1 mb-space-sm">{p.titulo}</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-space-md">{p.descripcion}</p>
+
+            <ul class="space-y-space-sm mb-space-md">
+              {p.puntos.map((punto) => (
+                <li class="flex items-start gap-2 text-on-surface font-body-sm">
+                  <span class:list={['material-symbols-outlined text-[18px]', p.puntoIconoClase]}>
+                    {p.puntoIcono}
+                  </span>
+                  <span>{punto}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class:list={['pt-space-md flex items-center justify-between px-4 py-2 rounded-lg', p.pieClase]}>
+            <span class="font-label-code text-label-code text-primary">{p.pieIzquierda}</span>
+            <span class:list={['font-label-code text-label-code', p.pieDerechaClase]}>{p.pieDerecha}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Section>

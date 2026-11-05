@@ -1,0 +1,17 @@
+---
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  as?: 'div' | 'article' | 'li';
+}
+const { as: Element = 'div', class: className, ...rest } = Astro.props;
+---
+
+<Element
+  class:list={[
+    'bg-surface-container-lowest rounded-xl shadow-md flex flex-col justify-between',
+    'transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(73,155,237,0.18)]',
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+</Element>

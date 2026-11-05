@@ -1,0 +1,90 @@
+{
+    "personal": {
+        "name": "Carlos Álvarez Carmona",
+        "username": "ByCarmona141",
+        "profession": "Ingeniero en Innovación y Desarrollo Tecnológico",
+        "headline": "Desarrollador de software | Investigador",
+        "description": "Profesional enfocado en el desarrollo de soluciones tecnológicas, investigación científica e innovación tecnológica.",
+        "location": {
+            "city": "Chilpancingo",
+            "state": "Guerrero",
+            "country": "México"
+        },
+        "contact": {
+            "email": "ByCarmona141@gmail.com",
+            "phone": "",
+            "website": "https://bycarmona141.github.io"
+        }
+    },
+    "social": {
+        "github": "https://github.com/ByCarmona141",
+        "linkedin": "",
+        "facebook": "",
+        "instagram": "",
+        "youtube": ""
+    },
+    "academic": {
+        "orcid": "0009-0004-7013-6752",
+        "googleScholar": "https://scholar.google.com/citations?hl=es&authuser=1&user=qNFtYNMAAAAJ"
+    },
+    "professional": {
+      "about": "Me especializo en el desarrollo de software, ingeniería computacional, investigación e innovación tecnológica. Mi trabajo integra el diseño de soluciones digitales, análisis de problemas y desarrollo de herramientas tecnológicas.",
+      "interests": [
+            "Ingeniería de software",
+            "Inteligencia artificial",
+            "Ciberseguridad",
+            "Investigación científica",
+            "Innovación tecnológica",
+            "Ingeniería computacional"
+      ],
+      "areas": [
+        {
+            "name": "Desarrollo de software",
+            "description": "Diseño y desarrollo de aplicaciones web y sistemas de información.",
+            "icon": "code"
+        },
+        {
+            "name": "Investigación científica",
+            "description": "Desarrollo de proyectos de investigación y generación de conocimiento científico.",
+            "icon": "microscope"
+        },
+        {
+            "name": "Innovación tecnológica",
+            "description": "Diseño e implementación de soluciones tecnológicas para resolver problemas reales.",
+            "icon": "lightbulb"
+        },
+        {
+            "name": "Ingeniería computacional",
+            "description": "Aplicación de tecnologías computacionales en diferentes contextos.",
+            "icon": "cpu"
+        }
+      ]
+    },
+  
+    "education": [
+        {
+            "level": "master",
+            "degree": "Maestría en Ingeniería para la Innovación y Desarrollo Tecnológico",
+            "institution": "Universidad Autónoma de Guerrero",
+            "status": "Finalizado",
+            "startDate": "",
+            "endDate": "",
+            "description": "Investigación enfocada en el desarrollo de herramientas de monitoreo para prevenir filtraciones de datos en una API RESTful."
+        }
+    ],
+  
+    "seo": {
+        "title": "Carlos Álvarez Carmona | Desarrollador e Investigador",
+        "description": "Portafolio profesional de Carlos Álvarez Carmona. Desarrollo de software, investigación científica e innovación tecnológica.",
+        "keywords": [
+            "Carlos Álvarez Carmona",
+            "ByCarmona141",
+            "Desarrollo de software",
+            "Ciberseguridad",
+            "Investigación científica",
+            "Innovación tecnológica"
+      ],
+      "author": "Carlos Álvarez Carmona",
+      "language": "es-MX"
+    }
+}

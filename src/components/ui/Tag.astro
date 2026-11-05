@@ -1,0 +1,15 @@
+---
+interface Props {
+  size?: 'sm' | 'md';
+}
+const { size = 'md' } = Astro.props;
+---
+
+<span
+  class:list={[
+    'px-2 py-0.5 bg-surface-container text-primary font-label-code rounded-DEFAULT',
+    size === 'md' ? 'text-[11px]' : 'text-[10px]',
+  ]}
+>
+  <slot />
+</span>

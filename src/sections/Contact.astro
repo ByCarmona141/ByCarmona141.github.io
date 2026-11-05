@@ -1,0 +1,221 @@
+---
+import { site, areas } from '@/content/site';
+
+// ---------- Configuración ----------
+// Pega aquí la dirección de tu servicio de formularios (ej: https://formspree.io/f/xxxxxx).
+// Si la dejas vacía, el formulario abrirá el correo del visitante.
+const FORM_ENDPOINT = '';
+
+const { email, orcid, redes } = site;
+
+const campo =
+  'w-full px-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-sm outline-none focus:bg-surface-container transition-all';
+---
+
+<section class="w-full bg-surface-container-low py-space-xl" id="contacto">
+  <div class="max-w-[1280px] mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+      <!-- ============ Columna izquierda: información ============ -->
+      <div class="lg:col-span-5 flex flex-col">
+        <span class="font-label-code text-label-code text-secondary font-semibold uppercase tracking-wider">
+          Conexión Profesional
+        </span>
+        <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-sm">
+          Iniciemos una Conversación
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-space-lg">
+          Abierto a consultas sobre ingeniería de software en Laravel/Angular, auditorías de seguridad en APIs y
+          proyectos de investigación académica en ciberseguridad aplicada.
+        </p>
+
+        <div class="flex flex-col gap-space-sm mb-space-lg">
+          <a
+            class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-lg hover:bg-surface-container transition-colors shadow-sm"
+            href={orcid.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="w-9 h-9 rounded-md bg-[#A6CE39]/15 text-[#6B8E23] flex items-center justify-center font-headline-sm text-xs font-bold">
+              iD
+            </span>
+            <div class="flex flex-col">
+              <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Identificador ORCID Oficial</span>
+              <span class="font-code-inline text-code-inline text-primary">{orcid.id}</span>
+            </div>
+          </a>
+
+          <a
+            class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-lg hover:bg-surface-container transition-colors shadow-sm"
+            href={`mailto:${email}`}
+          >
+            <div class="w-9 h-9 rounded-md bg-surface-container-high text-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]">alternate_email</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Correo Electrónico</span>
+              <span class="font-code-inline text-code-inline text-primary">{email}</span>
+            </div>
+          </a>
+
+          <div class="flex items-center gap-space-sm mt-2">
+            {redes.map((r) => (
+              <a
+                class="flex-1 flex items-center justify-center gap-2 p-3 bg-surface-container-lowest rounded-lg hover:bg-surface-container transition-colors shadow-sm text-primary font-code-inline text-sm font-semibold"
+                href={r.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="material-symbols-outlined text-[18px]">{r.icono}</span>
+                <span>{r.nombre}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="p-space-md bg-surface-container rounded-lg">
+          <span class="font-label-code text-label-code text-secondary font-bold block mb-1">
+            COMPROMISO DE CONFIDENCIALIDAD
+          </span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            Toda consulta sobre vulnerabilidades de software o telemetría interna se gestiona bajo los estándares de
+            divulgación responsable y ética profesional.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============ Columna derecha: formulario ============ -->
+      <div class="lg:col-span-7 bg-surface-container-lowest p-space-xl rounded-xl shadow-md">
+        <form
+          id="contact-form"
+          class="flex flex-col gap-space-md"
+          data-endpoint={FORM_ENDPOINT}
+          data-email={email}
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-sm text-label-sm text-on-surface font-medium" for="contact-name">
+                Nombre completo
+              </label>
+              <input
+                class={campo}
+                id="contact-name"
+                name="nombre"
+                type="text"
+                placeholder="Dr. / Ing. / Nombre"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-sm text-label-sm text-on-surface font-medium" for="contact-email">
+                Correo electrónico
+              </label>
+              <input
+                class={campo}
+                id="contact-email"
+                name="correo"
+                type="email"
+                placeholder="correo@institucion.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-sm text-label-sm text-on-surface font-medium" for="contact-subject">
+              Área de interés
+            </label>
+            <select class={campo} id="contact-subject" name="area">
+              {areas.map((a) => <option value={a.valor}>{a.texto}</option>)}
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-sm text-label-sm text-on-surface font-medium" for="contact-message">
+              Mensaje o propuesta
+            </label>
+            <textarea
+              class={`${campo} resize-none`}
+              id="contact-message"
+              name="mensaje"
+              rows="4"
+              placeholder="Describa el alcance del proyecto o la propuesta de investigación..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="flex items-center justify-between pt-2">
+            <span class="font-label-code text-label-code text-on-surface-variant flex items-center gap-1">
+              <span class="material-symbols-outlined text-[16px] text-secondary">lock</span>
+              Transmisión cifrada
+            </span>
+            <button
+              id="contact-submit"
+              type="submit"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-on-primary font-headline-sm text-sm font-semibold hover:bg-secondary transition-all shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              <span>Enviar Mensaje</span>
+              <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+          </div>
+
+          <!-- Aviso de resultado (el script lo llena y lo muestra) -->
+          <div id="form-feedback" role="status" aria-live="polite" class="hidden p-3 rounded-lg font-body-sm text-center"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const feedback = document.getElementById('form-feedback') as HTMLDivElement;
+  const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement;
+
+  const OK = 'p-3 rounded-lg font-body-sm text-center bg-surface-container text-primary';
+  const ERROR = 'p-3 rounded-lg font-body-sm text-center bg-error-container text-on-error-container';
+
+  function showMessage(text: string, isError = false) {
+    feedback.textContent = text;
+    feedback.className = isError ? ERROR : OK;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const endpoint = form.dataset.endpoint;
+    const data = new FormData(form);
+
+    // Modo 1: sin servicio de envío -> abre el correo del visitante
+    if (!endpoint) {
+      const areaSelect = form.elements.namedItem('area') as HTMLSelectElement;
+      const areaTexto = areaSelect.selectedOptions[0].text;
+      const asunto = `Contacto desde el portafolio: ${areaTexto}`;
+      const cuerpo = `Nombre: ${data.get('nombre')}\nCorreo: ${data.get('correo')}\n\n${data.get('mensaje')}`;
+
+      window.location.href =
+        `mailto:${form.dataset.email}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+      showMessage('Se abrió tu programa de correo. Revisa el mensaje y presiona enviar.');
+      return;
+    }
+
+    // Modo 2: con servicio de envío -> manda el mensaje por internet
+    submitBtn.disabled = true;
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (!res.ok) throw new Error('Respuesta no válida');
+
+      form.reset();
+      showMessage('Mensaje enviado con éxito. Carlos responderá a la brevedad posible.');
+    } catch {
+      showMessage(`No se pudo enviar el mensaje. Intenta de nuevo o escribe a ${form.dataset.email}.`, true);
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>

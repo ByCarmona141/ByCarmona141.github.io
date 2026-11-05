@@ -1,20 +1,20 @@
 ---
-
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import Hero from '@/sections/Hero.astro';
+import Stack from '@/sections/Stack.astro';
+import Projects from '@/sections/Projects.astro';
+import Certifications from '@/sections/Certifications.astro';
+import Duality from '@/sections/Duality.astro';
+import Contact from '@/sections/Contact.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
-
-<style is:global>
-	@import "tailwindcss";
-</style>
+<SiteLayout current="portafolio">
+  <div class="flex flex-col w-full">
+    <Hero />
+    <Stack />
+    <Projects />
+    <Certifications />
+    <Duality />
+    <Contact />
+  </div>
+</SiteLayout>

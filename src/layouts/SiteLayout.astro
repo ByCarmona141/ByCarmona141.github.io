@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import type { NavId } from '@/content/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  current?: NavId;
+}
+const { current, ...meta } = Astro.props;
+---
+
+<BaseLayout {...meta}>
+  <Header current={current} />
+  <main class="w-full pt-20 bg-background flex-1">
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

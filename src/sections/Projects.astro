@@ -1,0 +1,505 @@
+---
+import { projects } from '../content/projects';
+import Section from '@/components/ui/Section.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+
+// Icono de GitHub (se usa en 3 lugares, por eso lo guardo una vez)
+const githubPath =
+  'M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z';
+
+// Las 3 pestañas del modal
+const tabs = [
+  { id: 'arch', label: 'Arquitectura & Patrones', icon: 'account_tree', heading: 'Diseño Modular & Patrones Empresariales', headingIcon: 'architecture' },
+  { id: 'data', label: 'Base de Datos & Flujo', icon: 'database', heading: 'Persistencia ACID & Pipeline de Datos', headingIcon: 'sync_alt' },
+  { id: 'sec', label: 'Seguridad & Rendimiento', icon: 'verified_user', heading: 'Mitigación OWASP & SLA de Latencia', headingIcon: 'security' },
+];
+---
+
+<Section id="proyectos" tone="soft" class="overflow-hidden">
+    <SectionHeader
+      layout="stacked"
+      eyebrow="Implementaciones Principales"
+      title="Proyectos de Software Destacados"
+      description="Soluciones de software de nivel industrial diseñadas con estricto apego a patrones de diseño, mantenibilidad y rendimiento transaccional."
+    >
+
+      <div class="flex items-center gap-3 self-start md:self-end bg-surface-container-lowest px-3 py-2 rounded-xl shadow-sm border border-outline-variant/30">
+        <div class="font-label-code text-label-code font-semibold px-2 py-0.5 rounded bg-surface-container text-primary flex items-center gap-1 select-none">
+          <span id="carousel-current">1</span>
+          <span class="text-on-surface-variant font-normal">/</span>
+          <span id="carousel-total">{projects.length}</span>
+        </div>
+
+        <!-- Los puntos los crea el JavaScript -->
+        <div class="flex items-center gap-1.5 px-1" id="carousel-dots"></div>
+
+        <div class="h-4 w-[1px] bg-outline-variant/50"></div>
+
+        <div class="flex items-center gap-1.5">
+          <button
+            id="carousel-prev"
+            type="button"
+            aria-label="Proyecto anterior"
+            disabled
+            class="w-8 h-8 rounded-lg flex items-center justify-center text-white bg-[#022E5B] hover:bg-[#499BED] transition-all disabled:opacity-35 disabled:hover:bg-[#022E5B] disabled:cursor-not-allowed shadow-sm focus:outline-none focus:ring-2 focus:ring-[#499BED]"
+          >
+            <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+          </button>
+          <button
+            id="carousel-next"
+            type="button"
+            aria-label="Proyecto siguiente"
+            class="w-8 h-8 rounded-lg flex items-center justify-center text-white bg-[#022E5B] hover:bg-[#499BED] transition-all disabled:opacity-35 disabled:hover:bg-[#022E5B] disabled:cursor-not-allowed shadow-sm focus:outline-none focus:ring-2 focus:ring-[#499BED]"
+          >
+            <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+          </button>
+        </div>
+      </div>
+    </SectionHeader>
+    </div>
+
+    <!-- ============ Carrusel ============ -->
+    <div class="relative w-full overflow-hidden" id="carousel-viewport">
+      <div class="carousel-track flex -mx-3" id="carousel-track">
+        {projects.map((p) => (
+          <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3 carousel-card">
+            <article
+              data-project-key={p.key}
+              class="h-full bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(73,155,237,0.18)] cursor-pointer group"
+            >
+              <div class="p-space-lg flex flex-col">
+                <div class="w-full h-44 rounded-lg mb-space-md overflow-hidden relative shadow-sm bg-primary/10">
+                  <img
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    src={p.image}
+                    alt={p.cardTitle}
+                  />
+                  <span
+                    class:list={[
+                      'absolute top-2 right-2 px-2 py-0.5 rounded-DEFAULT font-label-code text-[10px] uppercase font-bold tracking-wider',
+                      p.imageBadgeClass,
+                    ]}
+                  >
+                    {p.imageBadge}
+                  </span>
+                </div>
+
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-label-code text-label-code text-secondary font-semibold">{p.category}</span>
+                  <span class="font-label-code text-label-code text-on-surface-variant">{p.version}</span>
+                </div>
+
+                <h3 class="font-headline-md text-headline-md text-primary mb-2">{p.cardTitle}</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">{p.description}</p>
+
+                <div class="flex flex-wrap gap-1.5 mb-space-md">
+                  {p.tags.map((tag) => (
+                    <span class="px-2 py-0.5 bg-surface-container text-primary font-label-code text-[11px] rounded-DEFAULT">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div class="p-space-lg pt-0 flex items-center justify-between">
+                <button
+                  type="button"
+                  class="font-code-inline text-code-inline text-secondary hover:text-primary font-semibold inline-flex items-center gap-1 transition-colors group-hover:underline text-left"
+                >
+                  <span>Detalles</span>
+                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </button>
+
+                {p.github || p.demo || p.nda ? (
+                  <div class="flex items-center gap-1.5">
+                    {p.nda && (
+                      <span
+                        class="p-1.5 px-2 rounded bg-surface-container-high text-on-surface-variant font-code-inline text-xs inline-flex items-center gap-1 cursor-default shadow-sm"
+                        title="Código propietario bajo acuerdo NDA"
+                      >
+                        <span class="material-symbols-outlined text-[14px] text-outline">lock</span>
+                        <span class="font-semibold">NDA Code</span>
+                      </span>
+                    )}
+                    {p.github && (
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Ver Repositorio GitHub"
+                        class="p-1.5 px-2 rounded bg-surface-container hover:bg-surface-container-high text-primary font-code-inline text-xs inline-flex items-center gap-1 transition-colors shadow-sm"
+                      >
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d={githubPath}></path>
+                        </svg>
+                        <span class="hidden sm:inline font-semibold">GitHub</span>
+                      </a>
+                    )}
+                    {p.demo && (
+                      <a
+                        href={p.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Probar Live Demo"
+                        class="p-1.5 px-2 rounded bg-primary text-on-primary hover:bg-secondary font-code-inline text-xs inline-flex items-center gap-1 transition-colors shadow-sm"
+                      >
+                        <span class="material-symbols-outlined text-[14px]">play_circle</span>
+                        <span class="font-semibold">Demo</span>
+                      </a>
+                    )}
+                  </div>
+                ) : (
+                  <span class="material-symbols-outlined text-outline text-[20px]">{p.icon}</span>
+                )}
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Modal de detalles ============ -->
+  <div
+    id="project-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    aria-hidden="true"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-slate-900/70 backdrop-blur-sm transition-opacity duration-300 opacity-0"
+  >
+    <div
+      id="modal-container"
+      class="relative w-full max-w-4xl max-h-[90vh] bg-surface-container-lowest rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-outline-variant/30 transform transition-all duration-300 scale-95"
+    >
+      <!-- Cabecera -->
+      <div class="px-6 py-4 border-b border-outline-variant/20 bg-surface-container-low flex items-start justify-between gap-4">
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span id="modal-category" class="font-label-code text-xs px-2.5 py-0.5 rounded font-bold uppercase tracking-wider bg-surface-container text-secondary"></span>
+            <span id="modal-badge" class="font-label-code text-xs px-2.5 py-0.5 rounded font-semibold bg-primary text-on-primary"></span>
+          </div>
+          <h3 id="modal-title" class="font-headline-lg text-xl sm:text-2xl text-primary font-bold tracking-tight"></h3>
+        </div>
+
+        <div class="flex items-center gap-2 mr-2">
+          <a
+            id="modal-header-github"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-code-inline text-xs font-semibold inline-flex items-center gap-1.5 transition-colors shadow-sm"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d={githubPath}></path></svg>
+            <span>GitHub</span>
+          </a>
+          <a
+            id="modal-header-demo"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 rounded-lg bg-primary hover:bg-secondary text-on-primary font-code-inline text-xs font-semibold inline-flex items-center gap-1.5 transition-colors shadow-sm"
+          >
+            <span class="material-symbols-outlined text-[16px]">play_circle</span>
+            <span>Live Demo</span>
+          </a>
+        </div>
+
+        <button
+          id="modal-close-btn"
+          type="button"
+          aria-label="Cerrar modal de detalles"
+          class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-secondary"
+        >
+          <span class="material-symbols-outlined text-[24px]">close</span>
+        </button>
+      </div>
+
+      <!-- Cuerpo con scroll -->
+      <div class="px-6 py-5 overflow-y-auto space-y-6 flex-1 max-h-[calc(90vh-140px)]">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
+          <div class="md:col-span-7 rounded-xl overflow-hidden shadow-sm border border-outline-variant/30 relative bg-primary/5 flex items-center justify-center h-48 md:h-auto min-h-[190px]">
+            <img id="modal-image" class="w-full h-full object-cover" alt="" />
+            <div class="absolute bottom-2 left-2 right-2 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center justify-between text-xs text-white font-label-code">
+              <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Telemetría Activa
+              </span>
+              <span id="modal-latency" class="text-secondary-container font-mono"></span>
+            </div>
+          </div>
+
+          <div class="md:col-span-5 flex flex-col justify-between bg-surface-container-low p-4 rounded-xl border border-outline-variant/20 gap-3">
+            <div>
+              <span class="font-label-code text-[11px] uppercase tracking-wider text-secondary font-bold block mb-1">Resumen del Sistema</span>
+              <p id="modal-summary" class="font-body-sm text-sm text-on-surface-variant"></p>
+            </div>
+            <div>
+              <span class="font-label-code text-[11px] uppercase tracking-wider text-on-surface-variant block mb-2 font-medium">Stack Tecnológico</span>
+              <div id="modal-tech" class="flex flex-wrap gap-1.5"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pestañas -->
+        <div class="border border-outline-variant/30 rounded-xl overflow-hidden bg-surface-container-lowest">
+          <div class="carousel-scroll-hide flex border-b border-outline-variant/30 bg-surface-container-low overflow-x-auto" role="tablist">
+            {tabs.map((t) => (
+              <button
+                type="button"
+                role="tab"
+                data-tab={t.id}
+                class="modal-tab-btn px-4 py-3 font-label-code text-xs sm:text-sm font-semibold flex items-center gap-1.5 whitespace-nowrap focus:outline-none"
+              >
+                <span class="material-symbols-outlined text-[18px]">{t.icon}</span>
+                <span>{t.label}</span>
+              </button>
+            ))}
+          </div>
+
+          <div class="p-5">
+            {tabs.map((t) => (
+              <div class="modal-tab-pane space-y-3 hidden" data-pane={t.id}>
+                <h4 class="font-headline-sm text-sm font-bold text-primary flex items-center gap-2">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">{t.headingIcon}</span>
+                  {t.heading}
+                </h4>
+                <p id={`modal-${t.id}-desc`} class="font-body-sm text-sm text-on-surface-variant"></p>
+                <div id={`modal-${t.id}-bullets`} class="bg-surface-container-low p-3.5 rounded-lg border border-outline-variant/20 font-code-inline text-xs text-primary space-y-1"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Pie -->
+      <div class="px-6 py-3.5 border-t border-outline-variant/20 bg-surface-container-low flex flex-wrap items-center gap-2">
+        <a
+          id="modal-footer-github"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-3.5 py-2 rounded-lg bg-surface-container-high text-primary hover:bg-surface-container-highest transition-colors font-code-inline text-xs font-semibold inline-flex items-center gap-1.5 shadow-sm"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d={githubPath}></path></svg>
+          <span>Repositorio GitHub</span>
+        </a>
+        <a
+          id="modal-footer-demo"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-3.5 py-2 rounded-lg bg-secondary text-white hover:bg-secondary-container transition-colors font-code-inline text-xs font-semibold inline-flex items-center gap-1.5 shadow-sm"
+        >
+          <span class="material-symbols-outlined text-[16px]">launch</span>
+          <span>Probar Demo</span>
+        </a>
+        <button
+          id="modal-close-footer"
+          type="button"
+          class="px-3.5 py-2 rounded-lg bg-primary text-on-primary hover:bg-secondary transition-colors font-headline-sm text-xs font-semibold inline-flex items-center gap-1 shadow-sm"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .carousel-track {
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .carousel-scroll-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .carousel-scroll-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  import { projects } from '../content/projects';
+
+  const byKey = Object.fromEntries(projects.map((p) => [p.key, p]));
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+
+  /* =====================  CARRUSEL  ===================== */
+  const track = $('carousel-track');
+  const viewport = $('carousel-viewport');
+  const prevBtn = $<HTMLButtonElement>('carousel-prev');
+  const nextBtn = $<HTMLButtonElement>('carousel-next');
+  const dotsBox = $('carousel-dots');
+  const currentLabel = $('carousel-current');
+  const totalLabel = $('carousel-total');
+
+  const DOT_ACTIVE = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#022E5B] scale-110';
+  const DOT_IDLE = 'w-2 h-2 rounded-full transition-all duration-300 bg-outline-variant hover:bg-[#499BED]';
+
+  let current = 0;
+
+  const visibleCards = () => (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1);
+  const maxIndex = () => Math.max(0, projects.length - visibleCards());
+
+  function buildDots() {
+    dotsBox.innerHTML = '';
+    for (let i = 0; i <= maxIndex(); i++) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Ir a la posición ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsBox.appendChild(dot);
+    }
+  }
+
+  function goTo(index: number) {
+    current = Math.min(Math.max(index, 0), maxIndex());
+    updateCarousel();
+  }
+
+  function updateCarousel() {
+    current = Math.min(current, maxIndex());
+    if (dotsBox.children.length !== maxIndex() + 1) buildDots();
+
+    track.style.transform = `translateX(-${(current * 100) / visibleCards()}%)`;
+    currentLabel.textContent = String(current + 1);
+    totalLabel.textContent = String(maxIndex() + 1);
+    prevBtn.disabled = current <= 0;
+    nextBtn.disabled = current >= maxIndex();
+
+    Array.from(dotsBox.children).forEach((dot, i) => {
+      dot.className = i === current ? DOT_ACTIVE : DOT_IDLE;
+    });
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+  window.addEventListener('resize', updateCarousel);
+
+  // Deslizar con el dedo
+  let startX = 0;
+  viewport.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].screenX; }, { passive: true });
+  viewport.addEventListener('touchend', (e) => {
+    const diff = startX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  }, { passive: true });
+
+  updateCarousel();
+
+  /* =====================  MODAL  ===================== */
+  const modal = $('project-modal');
+  const modalBox = $('modal-container');
+
+  const TAB_ON = 'modal-tab-btn px-4 py-3 font-label-code text-xs sm:text-sm font-semibold text-primary border-b-2 border-primary bg-surface-container-lowest flex items-center gap-1.5 whitespace-nowrap focus:outline-none';
+  const TAB_OFF = 'modal-tab-btn px-4 py-3 font-label-code text-xs sm:text-sm font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent flex items-center gap-1.5 whitespace-nowrap focus:outline-none';
+  const TECH_TAG = 'px-2 py-0.5 bg-surface-container text-primary font-label-code text-[11px] rounded-DEFAULT font-medium';
+
+  function setLink(id: string, url?: string) {
+    const a = $<HTMLAnchorElement>(id);
+    if (url) {
+      a.href = url;
+      a.style.display = '';
+    } else {
+      a.style.display = 'none';
+    }
+  }
+
+  function switchTab(id: string) {
+    document.querySelectorAll<HTMLElement>('.modal-tab-btn').forEach((btn) => {
+      const on = btn.dataset.tab === id;
+      btn.className = on ? TAB_ON : TAB_OFF;
+      btn.setAttribute('aria-selected', String(on));
+    });
+    document.querySelectorAll<HTMLElement>('.modal-tab-pane').forEach((pane) => {
+      pane.classList.toggle('hidden', pane.dataset.pane !== id);
+    });
+  }
+
+  function fillModal(key: string) {
+    const p = byKey[key];
+    if (!p) return false;
+    const m = p.modal;
+
+    $('modal-category').textContent = p.category;
+    $('modal-badge').textContent = m.badge;
+    $('modal-title').textContent = m.title;
+    $('modal-latency').textContent = m.latency;
+    $('modal-summary').textContent = m.summary;
+
+    const img = $<HTMLImageElement>('modal-image');
+    img.src = p.image;
+    img.alt = m.title;
+
+    const tech = $('modal-tech');
+    tech.innerHTML = '';
+    m.tech.forEach((t) => {
+      const tag = document.createElement('span');
+      tag.className = TECH_TAG;
+      tag.textContent = t;
+      tech.appendChild(tag);
+    });
+
+    (['arch', 'data', 'sec'] as const).forEach((id) => {
+      $(`modal-${id}-desc`).textContent = m[id].desc;
+      const box = $(`modal-${id}-bullets`);
+      box.innerHTML = '';
+      m[id].bullets.forEach((b) => {
+        const line = document.createElement('div');
+        line.textContent = `• ${b}`;
+        box.appendChild(line);
+      });
+    });
+
+    setLink('modal-header-github', p.github);
+    setLink('modal-header-demo', p.demo);
+    setLink('modal-footer-github', p.github);
+    setLink('modal-footer-demo', p.demo);
+
+    switchTab('arch');
+    return true;
+  }
+
+  function openModal(key: string) {
+    if (!fillModal(key)) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('overflow-hidden');
+    setTimeout(() => {
+      modal.classList.remove('opacity-0');
+      modalBox.classList.remove('scale-95');
+      modalBox.classList.add('scale-100');
+    }, 10);
+  }
+
+  function closeModal() {
+    modal.classList.add('opacity-0');
+    modalBox.classList.remove('scale-100');
+    modalBox.classList.add('scale-95');
+    modal.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }, 300);
+  }
+
+  // Abrir al hacer clic en una tarjeta (menos en sus enlaces)
+  document.querySelectorAll<HTMLElement>('[data-project-key]').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) return;
+      openModal(card.dataset.projectKey!);
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('.modal-tab-btn').forEach((btn) => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab!));
+  });
+
+  $('modal-close-btn').addEventListener('click', closeModal);
+  $('modal-close-footer').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+  });
+</script>

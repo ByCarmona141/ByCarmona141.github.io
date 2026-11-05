@@ -1,0 +1,68 @@
+---
+import { site, red } from '@/content/site';
+
+// Cambia o borra esta etiqueta según corresponda (ver advertencia abajo)
+const insignia = 'PhD / SWE';
+
+const anio = new Date().getFullYear();
+
+const columnas = [
+  {
+    titulo: 'Espacios',
+    enlaces: [
+      { texto: 'Portafolio General', href: '/' },
+      { texto: 'Plataforma Académica', href: '/research' },
+      { texto: 'Monitoreo de APIs RESTful', href: '/blog-tecnico' },
+      { texto: 'Certificaciones Técnicas', href: '/#certificaciones' },
+    ],
+  },
+  {
+    titulo: 'Identidad Digital',
+    enlaces: [
+      { texto: 'Formulario de Contacto', href: '/#contacto' },
+      { texto: 'Repositorio GitHub', href: red('github').url, externo: true },
+      { texto: 'Registro ORCID', href: site.orcid.url, externo: true },
+    ],
+  },
+];
+---
+
+<footer class="w-full bg-surface-container-low mt-space-xl">
+  <div class="max-w-[1280px] mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg">
+    <div class="flex flex-col gap-space-xs">
+      <div class="flex items-center gap-space-sm">
+        <span class="font-headline-sm text-headline-sm text-primary">{site.nombre}</span>
+        {insignia && (
+          <span class="font-label-code text-label-code bg-surface-container-highest text-primary px-space-xs py-0.5 rounded-DEFAULT">
+            {insignia}
+          </span>
+        )}
+      </div>
+      <p class="font-citation-editorial text-citation-editorial text-on-surface-variant max-w-md">
+        Ingeniería de software robusta, ciberseguridad aplicada e investigación sistemática en telemetría de
+        sistemas distribuidos.
+      </p>
+      <span class="font-label-sm text-label-sm text-on-surface-variant mt-space-xs">
+        © {anio} {site.nombre}. Todos los derechos reservados.
+      </span>
+    </div>
+
+    <div class="flex flex-wrap gap-space-xl">
+      {columnas.map((col) => (
+        <div class="flex flex-col gap-space-xs">
+          <span class="font-label-code text-label-code text-primary uppercase font-bold">{col.titulo}</span>
+          {col.enlaces.map((e) => (
+            <a
+              href={e.href}
+              target={e.externo ? '_blank' : undefined}
+              rel={e.externo ? 'noopener noreferrer' : undefined}
+              class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+            >
+              {e.texto}
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</footer>

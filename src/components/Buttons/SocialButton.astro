@@ -1,8 +1,8 @@
 ---
-const { title, icon, url="#", colorBackground="#fff", colorBorder="#000", logoColor="#000", textColor="#fff", shadow="#000" } = Astro.props;
+const { title, icon, url="#", colorBackground="#fff", colorBorder="#000", logoColor="#000", textColor="#fff", shadow="#000", size="142px" } = Astro.props;
 ---
 
-<style define:vars={{ colorBackground, colorBorder, logoColor, textColor, shadow }}>
+<style define:vars={{ colorBackground, colorBorder, logoColor, textColor, shadow, size }}>
     .button-container {
         display: flex;
         justify-content: center;
@@ -14,8 +14,8 @@ const { title, icon, url="#", colorBackground="#fff", colorBorder="#000", logoCo
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 142px;
-        height: 142px;
+        width: var(--size);
+        height: var(--size);
         color: #e5dede;
         font-weight: bold;
         text-decoration: none;

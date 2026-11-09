@@ -1,0 +1,112 @@
+export interface Publication {
+    title: string;
+    type: string;
+    journal: string;
+    year: number;
+    doi?: string;
+    issn?: string;
+    url: string;
+    authors: string[];
+    indexed: string;
+    icon: string;
+  }
+  
+  export interface Conference {
+    title: string;
+    event: string;
+    year: number;
+    role: string;
+    location: string;
+    url: string;
+    icon: string;
+  }
+  
+  export interface Research {
+    title: string;
+    institution: string;
+    role: string;
+    year: number;
+    description: string;
+    icon: string;
+  }
+  
+  export const academic = {
+    title: 'Producción Académica',
+    publications: [
+      {
+        title: 'Monitoring Tool to Prevent Data Leaks in a RESTful API',
+        type: 'Artículo científico',
+        journal: 'Digital Cultures, Ethics, and Corporate Responsibility: Perspectives in Contemporary Innovation',
+        year: 2026,
+        doi: '10.31876/9789942531582',
+        url: 'https://repo.grupocompas.com/items/c32165ce-b35b-48cc-81ba-1a75aefa0809',
+        authors: ['Carlos Álvarez Carmona', 'René Edmundo Cuevas Valencia', 'Arnulfo Catalán Villegas', 'Angelino Feliciano Morales'],
+        indexed: 'Scopus',
+        icon: '/icons/academic/scopus.svg',
+      },
+      {
+        title: 'Monitoring Software Tool to Prevent Data Leaks in a RESTful API',
+        type: 'Artículo científico',
+        journal: 'Technologies and Innovation',
+        year: 2024,
+        doi: '10.1007/978-3-031-75702-0_14',
+        url: 'https://link.springer.com/chapter/10.1007/978-3-031-75702-0_14',
+        authors: ['Carlos Álvarez Carmona', 'René Edmundo Cuevas Valencia', 'Arnulfo Catalán Villegas', 'Angelino Feliciano Morales'],
+        indexed: 'Springer',
+        icon: '/icons/academic/springer.svg',
+      },
+      {
+        title: 'Prototipo de Monitor para Detectar Riesgos de Seguridad en APIs RESTful',
+        type: 'Artículo científico',
+        journal: 'Feglinin',
+        year: 2024,
+        issn: '2594-2298',
+        url: 'https://federacionglobal.com/FEGLININ/No29/jun2024/Vol-2/index.html',
+        authors: ['Carlos Álvarez Carmona', 'René Edmundo Cuevas Valencia', 'Angelino Feliciano Morales'],
+        indexed: 'Latindex',
+        icon: '/icons/academic/latindex.svg',
+      },
+    ],
+    conferences: [
+      {
+        title: 'Monitoreo inteligente de APIs con detección de anomalías',
+        event: 'Congreso Internacional de Ingeniería en Software',
+        year: 2024,
+        role: 'Ponente',
+        location: 'México',
+        url: 'https://congreso.org/ponencia',
+        icon: '/icons/conference.svg',
+      },
+    ],
+    research: [
+      {
+        title: '4to Congreso Internacional sobre Tecnología, Innovación, Calidad y Productividad para el Desarrollo Económico de las Naciones',
+        institution: 'CITICYPRODEN',
+        role: 'PRESENTADOR DE PONENCIAS DE INVESTIGACIÓN',
+        year: 2025,
+        description: 'Desarrollado en las instalaciones del Instituto Tecnológico de Zitácuaro los días 28, 29 y 30 del mes de abril de 2025',
+        icon: '/icons/research.svg',
+      },
+      {
+        title: '4to Congreso Internacional sobre Tecnología, Innovación, Calidad y Productividad para el Desarrollo Económico de las Naciones',
+        institution: 'CITICYPRODEN',
+        role: 'PARTE FUNDAMENTAL DEL STAFF DEL EVENTO',
+        year: 2025,
+        description: 'Desarrollado en las instalaciones del Instituto Tecnológico de Zitácuaro los días 28, 29 y 30 del mes de abril de 2025',
+        icon: '/icons/research.svg',
+      },
+      {
+        title: 'Implementación de Pruebas Funcionales en una API RESTful',
+        institution: 'FESGRO',
+        role: 'PONENTE',
+        year: 2024,
+        description: 'Implementación de Pruebas Funcionales en una API RESTful, del área Ingenierías y Desarrollo Tecnológico, en modalidad ORAL, durante el XXIX Foro de Estudios sobre Guerrero',
+        icon: '/icons/research.svg',
+      },
+    ],
+  } satisfies {
+    title: string;
+    publications: Publication[];
+    conferences: Conference[];
+    research: Research[];
+  };

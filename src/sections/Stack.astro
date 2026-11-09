@@ -1,21 +1,25 @@
 ---
 import Section from '@/components/ui/Section.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
+import { frontend } from '@/content/skills/frontend';
+import { backend } from '@/content/skills/backend';
+import { tools } from '@/content/skills/tools';
+import type { Skill } from '@/content/skills/types';
 
-// ---------- Datos: para agregar una tecnología, agrega una línea aquí ----------
-const stack = [
-  { icon: 'code_blocks', name: 'Laravel', note: 'PHP Framework' },
-  { icon: 'web', name: 'Angular', note: 'SPA & RxJS' },
-  { icon: 'data_object', name: 'TypeScript', note: 'Tipado Estricto' },
-  { icon: 'php', name: 'PHP 8.x', note: 'Core Backend' },
-  { icon: 'database', name: 'MySQL / PG', note: 'RDBMS Transaccional' },
-  { icon: 'api', name: 'RESTful APIs', note: 'Clean Contracts' },
-  { icon: 'security', name: 'OWASP Stds', note: 'Seguridad Ofensiva' },
-  { icon: 'hub', name: 'Docker', note: 'Contenedores' },
-  { icon: 'commit', name: 'Git Workflow', note: 'Control Versiones' },
-  { icon: 'stream', name: 'WebSockets', note: 'Tiempo Real' },
-  { icon: 'monitoring', name: 'Telemetría', note: 'Observabilidad' },
-  { icon: 'fingerprint', name: 'Auth JWT / OAuth', note: 'RBAC / ACL' },
+// Texto pequeño debajo del nombre: "Avanzado · 4 años", "Relacional", etc.
+function nota(s: Skill) {
+  if (s.level && s.years) return `${s.level} · ${s.years} ${s.years === 1 ? 'año' : 'años'}`;
+  return s.type ?? s.note ?? 'Herramienta';
+}
+
+// Junto todo en una sola lista para el carrusel
+const stack: Skill[] = [
+  ...backend.frameworks,
+  ...backend.languages,
+  ...frontend.frameworks,
+  ...frontend.languages,
+  ...backend.databases,
+  ...tools.tools,
 ];
 ---
 
@@ -26,7 +30,6 @@ const stack = [
     description="Herramientas seleccionadas con rigor por su estabilidad operativa, rendimiento y capacidad de auditoría en entornos de misión crítica."
   />
 
-  <!-- Carrusel infinito -->
   <div class="marquee-wrap relative w-full overflow-hidden py-2">
     <div class="animate-marquee items-center gap-space-sm">
       {[0, 1].map((copia) => (
@@ -38,9 +41,9 @@ const stack = [
             <div
               class="w-44 bg-surface-container-low p-4 rounded-lg flex flex-col items-center justify-center text-center shadow-sm hover:bg-surface-container transition-colors flex-shrink-0"
             >
-              <span class="material-symbols-outlined text-primary text-[28px] mb-2">{item.icon}</span>
+              <img src={item.icon} alt="" loading="lazy" class="w-8 h-8 object-contain mb-2" />
               <span class="font-headline-sm text-sm font-semibold text-primary">{item.name}</span>
-              <span class="font-label-code text-[11px] text-secondary mt-1">{item.note}</span>
+              <span class="font-label-code text-[11px] text-secondary mt-1">{nota(item)}</span>
             </div>
           ))}
         </div>
@@ -50,13 +53,11 @@ const stack = [
 </Section>
 
 <style>
-  /* Difumina los bordes izquierdo y derecho */
   .marquee-wrap {
     -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
     mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
 
-  /* Movimiento continuo */
   @keyframes marquee {
     0%   { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
@@ -64,10 +65,10 @@ const stack = [
   .animate-marquee {
     display: flex;
     width: max-content;
-    animation: marquee 32s linear infinite;
+    /* Antes 32s: ahora hay más tarjetas, así que lo hago más lento para que se pueda leer */
+    animation: marquee 60s linear infinite;
   }
 
-  /* Se detiene al pasar el mouse */
   .marquee-wrap:hover .animate-marquee {
     animation-play-state: paused;
   }

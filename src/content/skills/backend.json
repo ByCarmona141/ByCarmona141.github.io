@@ -5,19 +5,22 @@
             "name": "PHP",
             "level": "Avanzado",
             "years": 4,
-            "icon": "/icons/php.svg"
+            "icon": "/icons/php.svg",
+            "note": ""
         },
         {
             "name": "Java",
             "level": "Intermedio",
             "years": 2,
-            "icon": "/icons/java.svg"
+            "icon": "/icons/java.svg",
+            "note": ""
         },
         {
             "name": "Python",
             "level": "Básico",
             "years": 1,
-            "icon": "/icons/python.svg"
+            "icon": "/icons/python.svg",
+            "note": ""
         }
     ],
     "frameworks": [
@@ -26,31 +29,36 @@
             "type": "Framework",
             "level": "Avanzado",
             "years": 4,
-            "icon": "/icons/laravel.svg"
+            "icon": "/icons/laravel.svg",
+            "note": ""
         },
         {
             "name": "FastAPI",
             "type": "Framework",
             "level": "Intermedio",
             "years": 1,
-            "icon": "/icons/fastapi.svg"
+            "icon": "/icons/fastapi.svg",
+            "note": ""
         }
     ],
     "databases": [
         {
             "name": "MySQL",
             "type": "Relacional",
-            "icon": "/icons/mysql.svg"
+            "icon": "/icons/mysql.svg",
+            "note": ""
         },
         {
             "name": "MariaDB",
             "type": "Relacional",
-            "icon": "/icons/mariadb.svg"
+            "icon": "/icons/mariadb.svg",
+            "note": ""
         },
         {
             "name": "PostgreSQL",
             "type": "Relacional",
-            "icon": "/icons/postgresql.svg"
+            "icon": "/icons/postgresql.svg",
+            "note": ""
         }
     ]
 }

@@ -5,25 +5,29 @@
             "name": "HTML",
             "level": "Avanzado",
             "years": 4,
-            "icon": "/icons/html.svg"
+            "icon": "/icons/html.svg",
+            "note": ""
         },
         {
             "name": "CSS",
             "level": "Avanzado",
             "years": 4,
-            "icon": "/icons/css.svg"
+            "icon": "/icons/css.svg",
+            "note": ""
         },
         {
             "name": "JavaScript",
             "level": "Avanzado",
             "years": 4,
-            "icon": "/icons/javascript.svg"
+            "icon": "/icons/javascript.svg",
+            "note": ""
         },
         {
             "name": "TypeScript",
             "level": "Intermedio",
             "years": 2,
-            "icon": "/icons/typescript.svg"
+            "icon": "/icons/typescript.svg",
+            "note": ""
         }
     ],
     "frameworks": [
@@ -32,28 +36,32 @@
             "type": "Framework",
             "level": "Intermedio",
             "years": 2,
-            "icon": "/icons/angular.svg"
+            "icon": "/icons/angular.svg",
+            "note": ""
         },
         {
             "name": "Astro",
             "type": "Framework",
             "level": "Intermedio",
             "years": 1,
-            "icon": "/icons/astro.svg"
+            "icon": "/icons/astro.svg",
+            "note": ""
         },
         {
             "name": "Bootstrap",
             "type": "Framework",
             "level": "Avanzado",
             "years": 4,
-            "icon": "/icons/bootstrap.svg"
+            "icon": "/icons/bootstrap.svg",
+            "note": ""
         },
         {
             "name": "TailwindCSS",
             "type": "Framework",
             "level": "Avanzado",
             "years": 2,
-            "icon": "/icons/tailwind.svg"
+            "icon": "/icons/tailwind.svg",
+            "note": ""
         }
     ]
 }

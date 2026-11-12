@@ -16,7 +16,7 @@ export const site = {
 export const nav = [
   { id: 'portafolio', texto: 'Portafolio', href: '/' },
   { id: 'research', texto: 'Research', href: '/research' },
-  { id: 'blog-tecnico', texto: 'Blog Técnico', href: '/blog-tecnico' },
+  { id: 'blog', texto: 'Blog', href: '/blog' },
 ] as const;
 
 export const areas = [
